@@ -92,3 +92,66 @@ var NumberLibrary = function () {
 
     };
     };
+// Array Library
+var ArrayLibrary = function () {
+   // Find the smallest value in an array than is greater than a given number.
+   // null is returned if the number is not within the range of numbers in the array
+   var smValGNumInArray = function (array,num) {
+   array.sort(function(a,b){return a-b;});
+   if (num >= array[0] && num < array[array.length-1]) {
+   array.push(num);
+   array.sort(function(a,b){return a-b;});
+   var result = array[array.lastIndexOf(num) + 1];
+   return result;
+   } else {
+   return null;
+   };
+   };
+  // Largest value in array less than a given number *My own addition to the list
+  // null is returned if the number is not within the range of numbers in the array
+  var lrgValLNumInArray = function (array,num) {
+  array.sort(function(a,b){return a-b;});
+  if (num > array[0] && num <= array[array.length-1]) {
+  array.push(num);
+  array.sort(function(a,b){return a-b;});
+  var result = array[array.indexOf(num) - 1];
+  return result;
+  } else {
+  return null;
+  };
+  };
+  // Find the total value of just the numbers in an array, even if some of the items are not numbers.
+  // edited to not use !isNaN because a string number ex. "10" would return as a number not a string
+  var totalValNumInArray = function (array) {
+  var total = 0;
+  for (var i = 0, j = array.length; i < j; i++) {
+  if (array[i]/1 === array[i]) {
+  total += array[i];
+  };
+  };
+  return total;
+  };
+  // Given an array of objects and the name of a key, return the array sorted by the value of that key in each of the objects: “a” + [{a:2},{a:3},{a:1}] --> [{a:1},{a:2},{a:3}]..
+  var sortKeyByValInArray = function (array,givenKey) {
+  return (array.sort(function(a,b){return a[givenKey] - b[givenKey];}));
+  };
+  // Finds index of duplicate items in an array *My own addition to the list
+  var dupInArray = function (findItem,array) {
+  var holdIndex = [], index;
+  for (var i = 0, j = array.length; i < j; i++) {
+  if (array[i] === findItem) {
+  index = array.indexOf(array[i],i);
+  holdIndex.push(index);
+  };
+  };
+  return holdIndex;
+  };
+  return {
+  "smValGNumInArray" : smValGNumInArray,
+  "lrgValLNumInArray" : lrgValLNumInArray,
+  "totalValNumInArray" : totalValNumInArray,
+  "sortKeyByValInArray" : sortKeyByValInArray,
+  "dupInArray" : dupInArray
+  };
+  };
+
