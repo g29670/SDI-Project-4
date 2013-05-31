@@ -52,3 +52,43 @@ var StringLibrary = function () {
 
    };
    };
+// // Number Library
+var NumberLibrary = function () {
+  // Format a number to use a specific number of decimal places as for money: 2.1 --> 2.10.
+  var formatDecimal = function (num,afterDecimal) {
+        return Number(num.toFixed(afterDecimal));
+    };
+    // Checks to see is the number above or below a number is within a certain percent
+    var fuzzyNum = function (num,compareNum,percent) {
+    var percentage = (num/compareNum) * 100;
+    if ((num >= compareNum && percentage >= percent) || (num < compareNum && percentage < percent)) {
+    return false;
+    } else {
+    return true;
+    };
+    };
+    // Input two dates using new Date(yyyy,mm,dd)
+    // Output format [Days,Hours,Minutes,Seconds] conversion for each at specific index shown
+    var timeBtDates = function (date1,date2) {
+    var results = [];
+    var difference = (date1 > date2) ? date1.getTime() - date2.getTime() : date2.getTime() - date1.getTime();
+    results[3] = difference / 1000;
+    results[2] = results[3] / 60;
+    results[1] = results[2] / 60;
+    results[0] = results[1] / 24;
+    return results;
+
+    };
+    //Fuzzy-match a number: is the number above or below a number within a certain percent?
+    // Changes a string "x" to an integer value x
+    var strToNum = function (num) {
+    return Number(num);
+    };
+     return {
+    "formatDecimal" : formatDecimal,
+    "fuzzyNum" : fuzzyNum,
+    "timeBtDates" : timeBtDates,
+    "strToNum" : strToNum
+
+    };
+    };
