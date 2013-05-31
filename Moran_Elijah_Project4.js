@@ -155,3 +155,46 @@ var ArrayLibrary = function () {
   };
   };
 
+// Test Area
+
+// Loop speed testing
+// using jsperf.com to test speed
+// http://jsperf.com/fors-vs-while/10
+
+// String Tests
+console.log("String Tests");
+var stringLib = StringLibrary();
+console.log(stringLib.isPhoneNumUS("281-222-5555"));
+console.log(stringLib.isEmailAddr("goodguy@yahoo.com"));
+console.log(stringLib.isUrl("http://yahoo.com"));
+console.log(stringLib.splitStrUpper("new years happy holidays"));
+console.log(stringLib.swapSeparator("a,b,c","/"));
+console.log(" ");
+// Number Tests
+console.log("Number Tests");
+var numberLib = NumberLibrary();
+console.log(numberLib.formatDecimal(2.116,2));
+console.log(numberLib.fuzzyNum(10,5,50));
+console.log(numberLib.fuzzyNum(5,10,50));
+var date1 = new Date(2013,9,30);
+var date2 = new Date(2013,5,30);
+var timeConversion = numberLib.timeBtDates(date1,date2);
+console.log("Difference in days: " + timeConversion[0] + ", in hours: " + timeConversion[1]);
+console.log(numberLib.strToNum("5678"));
+console.log(" ");
+
+// Array Tests
+console.log("Array Tests");
+var arrayLib = ArrayLibrary();
+var numList = [1,5,9,10,12,2,4,8];
+console.log(arrayLib.smValGNumInArray(numList,1));
+console.log(arrayLib.lrgValLNumInArray(numList,6));
+var randomList = [10,"apple","orange",10,20,"10"];
+console.log(arrayLib.totalValNumInArray(randomList));
+var arrayObjects = [{a:6},{a:1},{a:8},{a:2},{a:3},{a:5},{a:4},{a:7},{b:3},{b:5},{b:1},{b:4},{b:2},{b:6},{c:3},{c:5},{c:1},{c:4},{c:2},{c:6}];
+console.log(arrayLib.sortKeyByValInArray(arrayObjects,"a"));
+var arrayList = ["Martin","Luther", 1050, 1050, 1050, "King",1050,30,10];
+console.log(arrayLib.dupInArray(1050,arrayList));
+
+
+
